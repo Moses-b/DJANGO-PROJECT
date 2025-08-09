@@ -20,9 +20,8 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-env = environ.Env(
-    # Définissez les valeurs par défaut
-    DEBUG=(bool, False))
+env = environ.Env()
+environ.Env.read_env()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -33,7 +32,7 @@ SECRET_KEY = 'yqs=5le%!%3qvn)ysb3j+jp5o8kvieziu03g_jntkj1%v^@bfw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
 
 
 # Application definition
