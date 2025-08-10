@@ -32,7 +32,8 @@ SECRET_KEY = 'yqs=4le%!%3qvn)ysb3j+jp5o8kvieziu03g_jntkj1%v^@bfw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['127.0.0.1', 'localhost']) # Update this with your actual domain in production
+ALLOWED_HOSTS = ['*']
+
 # Application definition
 
 INSTALLED_APPS = [
