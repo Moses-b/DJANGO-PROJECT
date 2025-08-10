@@ -28,13 +28,11 @@ environ.Env.read_env()
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-SECRET_KEY = 'yqs=5le%!%3qvn)ysb3j+jp5o8kvieziu03g_jntkj1%v^@bfw'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
-
-
+ALLOWED_HOSTS = ['*']  # Update this with your actual domain in production
 # Application definition
 
 INSTALLED_APPS = [
@@ -136,4 +134,4 @@ STATICFILES_DIRS = [
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+GEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
