@@ -1,13 +1,13 @@
   // 1. GESTION DU CLIC SUR LE BOUTON HAMBURGER
     if (menuBtn) {
-        menuBtn.addEventListener('click', () => {
+        menuBtn.addEventListener('click', () => {home
             // Affiche ou cache le menu en alternant la classe 'hidden' de Tailwind
             mobileMenu.classList.toggle('hidden');
         });
     }
 
     // 2. GESTION DU DÉFILEMENT FLUIDE (SMOOTH SCROLL) ET FERMETURE DU MENU
-    document.querySelectorAll('a[href^="home"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="mobile-menu"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault(); // Empêche le comportement par défaut du lien
             
