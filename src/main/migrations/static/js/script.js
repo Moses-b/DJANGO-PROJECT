@@ -7,7 +7,7 @@
     }
 
     // 2. GESTION DU DÉFILEMENT FLUIDE (SMOOTH SCROLL) ET FERMETURE DU MENU
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="home"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault(); // Empêche le comportement par défaut du lien
             
