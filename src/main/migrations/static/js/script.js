@@ -1,34 +1,49 @@
-  // 1. GESTION DU CLIC SUR LE BOUTON HAMBURGER
-    if (menuBtn) {
-        menuBtn.addEventListener('click', () => {home
-            // Affiche ou cache le menu en alternant la classe 'hidden' de Tailwind
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
-
-    // 2. GESTION DU DÉFILEMENT FLUIDE (SMOOTH SCROLL) ET FERMETURE DU MENU
-    document.querySelectorAll('a[href^="mobile-menu"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault(); // Empêche le comportement par défaut du lien
+  document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
             
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                // Fait défiler la page jusqu'à l'élément cible
-                window.scrollTo({
-                    top: targetElement.offsetTop - 70, // -70px pour compenser la hauteur de la nav-bar
-                    behavior: 'smooth'
+            // 1. Gestion du bouton hamburger
+            if (menuBtn) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenu.classList.toggle('mobile-menu');
                 });
-                
-                // Ferme le menu mobile s'il est ouvert après avoir cliqué sur un lien
-                if (!mobileMenu.classList.contains('hidden')) {
+            }
+            
+            // 2. Gestion du défilement fluide et fermeture du menu
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    // Empêche le comportement par défaut
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        // Calcule la position de l'élément cible
+                        const targetPosition = targetElement.offsetTop - 70;
+                        
+                        // Défilement fluide
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Ferme le menu mobile s'il est ouvert
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+            
+            // Fermer le menu si on clique en dehors
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
                     mobileMenu.classList.add('hidden');
                 }
-            }
+            });
         });
-    });
-
         // Form submission
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
